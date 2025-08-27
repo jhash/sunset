@@ -1,3 +1,5 @@
+github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/willoma/bulma-gomponents v0.13.0 h1:2l3t354lcG2P3bGzCscaoTBzhENZxt+fNFIeUb4l1+Q=
 github.com/willoma/bulma-gomponents v0.13.0/go.mod h1:UyHpsnXNr1ekHlF+730EoNPBTlJfexR8/dd2UWnZQD0=
 github.com/willoma/gomplements v0.8.0 h1:WIf8K18LHDiGbhYFg2OL8d8NrNnLgtym5MLF2IkMSCw=

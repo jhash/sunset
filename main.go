@@ -3,16 +3,27 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
+	"path/filepath"
 	"time"
 
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/components"
 	. "maragu.dev/gomponents/html"
 	. "maragu.dev/gomponents/http"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("web/static"))
+	godotenv.Load()
+
+	staticDir := os.Getenv("STATIC_PATH")
+	if staticDir == "" {
+		workDir, _ := os.Getwd()
+		staticDir = filepath.Join(workDir, "web/static")
+	}
+	fs := http.FileServer(http.Dir(staticDir))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", Adapt(func(w http.ResponseWriter, r *http.Request) (Node, error) {
