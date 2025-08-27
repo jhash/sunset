@@ -1,16 +1,20 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"time"
 
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/components"
+	. "maragu.dev/gomponents/html"
 	. "maragu.dev/gomponents/http"
-
-	b "github.com/willoma/bulma-gomponents"
 )
 
 func main() {
+	fs := http.FileServer(http.Dir("web/static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	http.HandleFunc("/", Adapt(func(w http.ResponseWriter, r *http.Request) (Node, error) {
 		return SunsetPage(), nil
 	}))
@@ -23,17 +27,20 @@ func SunsetPage() Node {
 		Title: "Sunset",
 		Description: "Sunset",
 		Body: []Node{
-			b.Hero(
-				b.HeroHead(
-					b.Container(
-						b.Title(
-							Text("If you are reading this, you are invited to watch the sunset at:"),
+			Div(
+				Class("container is-flex is-flex-direction-column is-justify-content-center is-align-items-center is-flex-grow-1"),
+				Div(
+					Class("hero is-medium is-warning is-outlined"),
+					Div(
+						Class("hero-body"),
+						H1(
+							Class("hero-title is-size-1 has-text-weight-bold block"),
+							Text(fmt.Sprintf("If you are reading this (on %s), you are invited to watch the sunset at:", time.Now().Format("Monday, January 2, 2006"))),
 						),
-					),
-				),
-				b.HeroFoot(
-					b.Container(
-						b.Title(Text("Pier 6, Brooklyn")),
+						H3(
+							Class("hero-subtitle is-size-2"),
+							Text("Pier 6, Brooklyn"),
+						),
 					),
 				),
 			),
@@ -47,9 +54,13 @@ func Page(props HTML5Props) Node {
 		Description: props.Description,
 
 		Head: []Node{
+			Link(Rel("stylesheet"), Href("https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css")),
+			Link(Rel("stylesheet"), Href("/static/index.css")),
 			Group(props.Head),
 		},
 
-		Body: Group(props.Body),
+		Body: []Node{
+			Group(props.Body),
+		},
 	})
 }
