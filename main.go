@@ -7,12 +7,14 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/joho/godotenv"
+
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/components"
 	. "maragu.dev/gomponents/html"
 	. "maragu.dev/gomponents/http"
 
-	"github.com/joho/godotenv"
+	lucide "github.com/eduardolat/gomponents-lucide"
 )
 
 func main() {
@@ -39,9 +41,15 @@ func SunsetPage() Node {
 		Description: "Sunset",
 		Body: []Node{
 			Div(
-				Class("container is-flex is-flex-direction-column is-justify-content-center is-align-items-center is-flex-grow-1"),
+				Class("container is-flex is-flex-direction-column is-align-items-center is-flex-grow-1"),
 				Div(
-					Class("hero is-medium is-warning is-outlined"),
+					Class("block pt-6"),
+					lucide.Sunset(
+						Style("width: 150px; height: 150px; color:rgb(33, 33, 33);"),
+					),
+				),
+				Div(
+					Class("hero is-medium is-warning is-outlined m-5"),
 					Div(
 						Class("hero-body"),
 						H1(
