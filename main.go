@@ -37,7 +37,7 @@ func main() {
 
 func SunsetPage() Node {
 	return Page(HTML5Props{
-		Title: "Sunset",
+		Title:       "Sunset",
 		Description: "Sunset",
 		Body: []Node{
 			Div(
@@ -58,7 +58,7 @@ func SunsetPage() Node {
 						),
 						H3(
 							Class("hero-subtitle is-size-2"),
-							Text("Pier 6, Brooklyn"),
+							Text("Astoria Park War Memorial, Queens"),
 						),
 					),
 				),
