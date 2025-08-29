@@ -38,7 +38,7 @@ func main() {
 func SunsetPage() Node {
 	return Page(HTML5Props{
 		Title:       "Sunset",
-		Description: "Sunset",
+		Description: "Watch the sunset together. Become and opacarophile.",
 		Body: []Node{
 			Div(
 				Class("container is-flex is-flex-direction-column is-align-items-center is-flex-grow-1"),
@@ -58,7 +58,7 @@ func SunsetPage() Node {
 						),
 						H3(
 							Class("hero-subtitle is-size-2"),
-							Text("Astoria Park War Memorial, Queens"),
+							Text("Little Island, Manhattan"),
 						),
 					),
 				),
