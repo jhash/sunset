@@ -1,0 +1,55 @@
+:root {
+  --background-dark: #2d1b1b;
+}
+
+html,
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  background: var(--primary);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+/* Reusable dark mode mixin pattern */
+.sunset-icon {
+  width: 150px;
+  height: 150px;
+}
+
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 0.333rem;
+
+  & input {
+    margin-right: 0;
+  }
+}
+
+/* Dark mode */
+
+/* Manual dark theme toggle */
+:root[data-theme="dark"],
+[data-theme="dark"] body {
+  background: var(--background-dark);
+}
+
+/* System dark mode - only when no light theme is explicitly set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    background: var(--background-dark);
+
+    & body {
+      background: var(--background-dark);
+    }
+  }
+}

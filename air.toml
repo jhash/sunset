@@ -1,0 +1,15 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+bin = "./tmp/sunset"
+cmd = "go build -o ./tmp/sunset cmd/sunset/main.go"
+exclude_dir = ["tmp", "vendor", "internal/web/static"]
+include_ext = ["go"]
+
+[log]
+main_only = true
+time = true
+
+[misc]
+clean_on_exit = true
