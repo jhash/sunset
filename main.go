@@ -36,6 +36,13 @@ func main() {
 }
 
 func SunsetPage() Node {
+	// Load Eastern timezone
+	easternTZ, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		// Fallback to UTC if timezone loading fails
+		easternTZ = time.UTC
+	}
+
 	return Page(HTML5Props{
 		Title:       "Sunset",
 		Description: "Watch the sunset together. Become and opacarophile.",
@@ -54,7 +61,7 @@ func SunsetPage() Node {
 						Class("hero-body"),
 						H1(
 							Class("hero-title is-size-1 has-text-weight-bold block"),
-							Text(fmt.Sprintf("If you are reading this (on %s), you are invited to watch the sunset at:", time.Now().Format("Monday, January 2, 2006"))),
+							Text(fmt.Sprintf("If you are reading this (on %s), you are invited to watch the sunset at:", time.Now().In(easternTZ).Format("Monday, January 2, 2006"))),
 						),
 						H3(
 							Class("hero-subtitle is-size-2"),
